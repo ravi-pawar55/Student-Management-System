@@ -4,11 +4,11 @@ const studentRouter = require('./routes/student');
 const adminRouter = require('./routes/admin');
 const authRouter = require('./routes/auth');
 const dbConnect = require('./config/dbConnect');
-const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
-app.use(express.json());
-app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 dbConnect();
 
 app.get('/v1/', (req, res) => {

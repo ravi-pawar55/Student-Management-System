@@ -6,8 +6,7 @@ const User = mongoose.model('User');
 exports.auth = async (req, res, next) => {
     try{
         //extract token
-        const token = req.cookies.token 
-                        || req.header("Authorization").replace("Bearer ", "");
+        const token = req.headers.authorization?.replace('Bearer ', '');
 
         if(!token) {
             return res.status(401).json({

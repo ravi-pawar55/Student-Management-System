@@ -24,12 +24,7 @@ exports.signin = async (req, res) => {
             )
             user.token = token
       user.password = undefined;
-      // Set cookie for token and return success response
-      const options = {
-        expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-        httpOnly: true,
-      }
-    return res.cookie("token", token, options).status(200).json({
+    return res.status(200).json({
         status: true,
         data:user,
         token:token,
