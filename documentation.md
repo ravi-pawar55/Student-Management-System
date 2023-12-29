@@ -70,7 +70,8 @@
     ```json
     {
     "title": "test title",
-    "description": "Nothing"
+    "description": "Nothing",
+    "dueTime" : "12/29/2023"
     }
     ```
 - **Response:**

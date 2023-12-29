@@ -37,16 +37,19 @@ exports.addStudent = async (req,res) => {
 
 exports.assignTask = async (req,res) => {
     try{
-        const {title, description} = req.body;
+        const {title, description,dueTime} = req.body;
 
         const students = await User.find({role: "Student"});
         let studentId = [];
         for(let i=0; i<students.length; i++) {
             studentId.push(students[i]._id);
         }
+        const date = new Date(dueTime);
+        console.log(date);
         const newTask = await Task.create({
             title,
             description,
+            dueTime:date,
         });
 
         for(let i=0; i<studentId.length; i++) {
